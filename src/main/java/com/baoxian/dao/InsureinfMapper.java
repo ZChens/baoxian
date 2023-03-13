@@ -15,7 +15,7 @@ public interface InsureinfMapper {
 
 
     //查询所有订单，用于业务员和管理员
-    List<Insureinf> AllInsureinfList(Map<String,Object> map);
+    List<Insureinf> AllInsureinfList(Insureinf insureinf);
 
     //根据用户查询订单，用于客户查看个人订单
 
