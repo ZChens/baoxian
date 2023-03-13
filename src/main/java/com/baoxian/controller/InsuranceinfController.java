@@ -24,7 +24,7 @@ public class InsuranceinfController {
 
     //保险总列表分页查询，以及模糊查询搜索框
     @RequestMapping("/SelectInsuranceinfByAll")
-    public String SelectInsuranceinfByAll2(Model model,
+    public String SelectInsuranceinfByAll(Model model,
                       @RequestParam(defaultValue = "1") Integer pageNum,
                       @RequestParam(defaultValue = "3") Integer pageSize,
                       @RequestParam(required = false) String insurancetype,
