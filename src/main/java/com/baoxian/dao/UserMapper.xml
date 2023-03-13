@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//
+EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baoxian.dao.UserMapper">
+
+    <!--用户注册-->
+    <insert id="AddUser" parameterType="User">
+    insert into user (userid, username, password, phone,sex,email)
+    values (#{userid}, #{username}, #{password}, #{phone},#{sex},#{email})
+    </insert>
+
+    <!--用户登录-->
+    <select id="UserLogin" parameterType="User" resultType="User">
+    select * from user
+    where username=#{username} and password=#{password}
+    </select>
+
+    <!--根据姓名查询用户，用于个人信息功能-->
+    <select id="SelectByUserName" resultType="User">
+        select * from user
+        where username=#{username}
+    </select>
+
+    <!--删除用户和用户注销账号-->
+    <delete id="DeleteUserById" parameterType="User">
+        delete from user where userid=#{userid}
+    </delete>
+
+    <!--查询所有用户，用于管理员的用户列表-->
+    <select id="AllUserList" resultType="User">
+        select * from user
+    </select>
+</mapper>

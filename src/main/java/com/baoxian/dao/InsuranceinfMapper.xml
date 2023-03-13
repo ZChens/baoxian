@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//
+EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baoxian.dao.InsuranceinfMapper">
+
+    <sql id="AllInsuranceinfList">
+        insuranceid,insurancename,insurancetype,insuredate,money
+    </sql>
+
+
+    <sql id="sql_name">
+        insuranceid,insurancename,insurancetype,insuredate,money
+    </sql>
+
+    <!--查询总列表以及多条件模糊查询，负责筛选输入框-->
+    <select id="SelectInsuranceinfByAll" resultType="Insuranceinf" resultSets="java.util.List">
+          select <include refid="sql_name"></include> from insuranceinf
+        <where>
+            <if test=" insurancename != null and insurancename != '' ">
+                insurancename like concat("%",#{insurancename},"%")
+            </if>
+            <if test=" insurancetype != null and insurancetype != '' ">
+                and insurancetype=#{insurancetype}
+            </if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
