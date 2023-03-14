@@ -7,7 +7,7 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <!--创建订单-->
     <insert id="AddInsureinf" parameterType="Insureinf">
     insert into Insureinf (insurancename, insurancetype, username, salesmanname)
-    values (#{insurancename}, #{insurancetype}, #{username}, #{salesmanname})
+    values(#{insurancename}, #{insurancetype}, #{username}, #{salesmanname})
     </insert>
 
 
@@ -16,12 +16,12 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
     <sql id="insureinf_C">
-        insuranceid,insurancename,insurancetype,username,salesmanname,checkstate,checkmessage,paystate,starttime,endtime;
+        insuranceid,insurancename,insurancetype,username,salesmanname,checkstate,checkmessage,paystate,starttime,endtime
     </sql>
 
     <!--查询所有订单，用于业务员和管理员-->
     <select id="AllInsureinfList" resultType="Insureinf" resultSets="java.util.List">
-        select <include refid="insureinf_C"></include> from Insureinf
+        select <include refid="insureinf_C"></include> from insureinf
         <where>
             <if test=" insurancename != null and insurancename != '' ">
                 insurancename like concat("%",#{insurancename},"%")
