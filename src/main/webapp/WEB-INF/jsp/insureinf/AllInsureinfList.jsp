@@ -24,6 +24,7 @@
 <form>
     <table class="table table-bordered">
         <tr>
+            <th>#</th>
             <th>保险名称</th>
             <th>保险类型</th>
             <th>客户</th>
@@ -37,6 +38,7 @@
         <tbody>
         <c:forEach items="${list}" var="insureinf">
             <tr>
+                <td>${insureinf.insuranceid}</td>
                 <td>${insureinf.insurancename}</td>
                 <td>${insureinf.insurancetype}</td>
                 <td>${insureinf.username}</td>

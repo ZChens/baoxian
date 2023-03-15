@@ -30,18 +30,24 @@
 <form>
     <table class="table table-bordered">
         <tr>
+            <th>#</th>
             <th>保险名称</th>
             <th>保险类型</th>
             <th>时效期</th>
             <th>价格</th>
+            <th>详情</th>
         </tr>
         <tbody>
         <c:forEach items="${list}" var="insuranceinf">
             <tr>
+                <td>${insuranceinf.insuranceid}</td>
                 <td>${insuranceinf.insurancename}</td>
                 <td>${insuranceinf.insurancetype}</td>
                 <td>${insuranceinf.insuredate}</td>
                 <td>${insuranceinf.money}</td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/insuranceinf/SelectDetailById.action" role="Button">保险详情</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

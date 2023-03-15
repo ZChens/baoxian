@@ -6,6 +6,7 @@ import com.baoxian.service.InsuranceinfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -44,4 +45,16 @@ public class InsuranceinfController {
       return "insuranceinf/SelectInsuranceinfByAll";
     }
 
+    //保险详情页面
+    @RequestMapping("/SelectDetailById")
+    public String SelectDetailById( Integer insuranceid, Model model){
+        Insuranceinf insuranceinf = new Insuranceinf();
+        insuranceinf.setInsuranceid(insuranceid);
+        HashMap<String,Object> map = insuranceinfService.SelectInsuranceinfByAll(insuranceinf,1,1);
+        List<Insuranceinf> list = (List<Insuranceinf>) map.get("data");
+        if(list != null&&list.size()>0){
+            model.addAttribute("insuranceinf",list.get(0));
+        }
+        return "insuranceinf/SelectDetailById";
+    }
 }

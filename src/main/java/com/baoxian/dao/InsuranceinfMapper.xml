@@ -23,6 +23,9 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
             <if test=" insurancetype != null and insurancetype != '' ">
                 and insurancetype=#{insurancetype}
             </if>
+            <if test=" insuranceid != null and insuranceid != '' ">
+                and insuranceid=#{insuranceid}
+            </if>
         </where>
     </select>
 
