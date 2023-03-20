@@ -23,7 +23,10 @@ public class Insuranceinf {
     private String insuredate;
     //价格
     private String money;
-
+    //最低赔偿
+    private String minpay;
+    //最高赔偿
+    private String maxpay;
 
 
 }

@@ -33,4 +33,11 @@ public class Insureinf {
     private Date starttime;
     //结束时间
     private String endtime;
+    //最低赔偿
+    private String minpay;
+    //最高赔偿
+    private String maxpay;
+    //保险状态
+    private String finalstate;
+
 }

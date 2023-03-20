@@ -17,6 +17,11 @@
  <div>
      <label>保险名称：</label>${insuranceinf.insurancename}<br>
      <label>保险类型：</label>${insuranceinf.insurancetype}<br>
+     <label>价格：</label>${insuranceinf.money}<br>
+     <label>时效期：</label>${insuranceinf.insuredate}<br>
+     <label>最低赔偿：</label>${insuranceinf.minpay}<br>
+     <label>最高赔偿：</label>${insuranceinf.maxpay}<br>
+     <a href="${pageContext.request.contextPath}/insuranceinf/" >（预留）购买保险</a>
  </div>
 </body>
 </html>

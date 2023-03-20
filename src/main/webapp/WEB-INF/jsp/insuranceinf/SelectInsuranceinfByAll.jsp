@@ -35,7 +35,9 @@
             <th>保险类型</th>
             <th>时效期</th>
             <th>价格</th>
-            <th>详情</th>
+            <th>最高赔偿</th>
+            <th>最低赔偿</th>
+            <th>操作</th>
         </tr>
         <tbody>
         <c:forEach items="${list}" var="insuranceinf">
@@ -45,8 +47,11 @@
                 <td>${insuranceinf.insurancetype}</td>
                 <td>${insuranceinf.insuredate}</td>
                 <td>${insuranceinf.money}</td>
+                <td>${insuranceinf.minpay}</td>
+                <td>${insuranceinf.maxpay}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/insuranceinf/SelectDetailById.action" role="Button">保险详情</a>
+                    <a href="${pageContext.request.contextPath}/insuranceinf/SelectDetailById.action" role="Button">保险详情</a>&nbsp;&nbsp;&nbsp;
+                    <a href="${pageContext.request.contextPath}/insureinf/AddInsureinf.action" role="button">购买</a>
                 </td>
             </tr>
         </c:forEach>

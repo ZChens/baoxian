@@ -66,7 +66,7 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6b8;</i>
-                    <cite>用户管理</cite>
+                    <cite>人员管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
@@ -80,117 +80,55 @@
                     </li >
 
                 </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/user/AllUserList.action">
+                            <%--点击在右侧出现动态的Tab--%>
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>用户列表</cite>
+
+                        </a>
+                    </li >
+
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="/findStudent">
+                            <%--点击在右侧出现动态的Tab--%>
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>业务员列表</cite>
+
+                        </a>
+                    </li >
+
+                </ul>
             </li>
 
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe723;</i>
-                    <cite>班级管理</cite>
+                    <cite>保险管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/user/AllUserList.action">
+                        <a _href="${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action">
                             <%--点击在右侧出现动态的Tab--%>
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>班级列表</cite>
+                            <cite>保险列表</cite>
                         </a>
                     </li >
 
                     <li>
-                        <a _href="/findClassStudent">
+                        <a _href="${pageContext.request.contextPath}/insureinf/AllInsureinfList.action">
                             <%--点击在右侧出现动态的Tab--%>
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>班级学生</cite>
+                            <cite>订单列表</cite>
                         </a>
                     </li >
                 </ul>
             </li>
 
-
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#59095;</i>
-                    <cite>宿舍管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormitory">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>宿舍列表</cite>
-                        </a>
-                    </li >
-                </ul>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormitoryStudent">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>人员信息</cite>
-                        </a>
-                    </li >
-                </ul>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormRepair">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修登记</cite>
-                        </a>
-                    </li >
-                </ul>
-
-            </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#59042;</i>
-                    <cite>卫生管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormClean">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>宿舍卫生</cite>
-                        </a>
-                    </li >
-                </ul>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findStudentClean">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>学生卫生</cite>
-                        </a>
-                    </li >
-                </ul>
-
-            </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="layui-icon">&#xe613;</i>
-                    <cite>访客管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findVisitor">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>访客列表</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
 
             <li>
                 <a href="javascript:;">

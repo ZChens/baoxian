@@ -34,6 +34,10 @@
             <th>支付状态</th>
             <th>生效时间</th>
             <th>结束时间</th>
+            <th>最高赔偿</th>
+            <th>最低赔偿</th>
+            <th>保险状态</th>
+
         </tr>
         <tbody>
         <c:forEach items="${list}" var="insureinf">
@@ -48,6 +52,9 @@
                 <td>${insureinf.paystate}</td>
                 <td>${insureinf.starttime}</td>
                 <td>${insureinf.endtime}</td>
+                <td>${insureinf.minpay}</td>
+                <td>${insureinf.maxpay}</td>
+                <td>${insureinf.finalstate}</td>
             </tr>
         </c:forEach>
         </tbody>

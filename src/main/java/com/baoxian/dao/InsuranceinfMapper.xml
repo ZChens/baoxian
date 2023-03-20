@@ -10,7 +10,7 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
     <sql id="sql_name">
-        insuranceid,insurancename,insurancetype,insuredate,money
+        insuranceid,insurancename,insurancetype,insuredate,money,minpay,maxpay
     </sql>
 
     <!--查询总列表以及多条件模糊查询，负责筛选输入框-->
