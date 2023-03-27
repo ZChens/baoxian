@@ -2,6 +2,8 @@ package com.baoxian.service;
 
 import com.baoxian.pojo.Salesman;
 
+import java.util.HashMap;
+
 public interface SalesmanService {
 
     //业务员登录
@@ -12,5 +14,6 @@ public interface SalesmanService {
 
     //删除用户和用户注销账号
     int DeleteSalesmanById(Integer salesmanid);
-
+    //业务员列表
+    HashMap<String,Object> AllSalesmanList(Salesman salesman,Integer pageNum, Integer pageSize);
 }

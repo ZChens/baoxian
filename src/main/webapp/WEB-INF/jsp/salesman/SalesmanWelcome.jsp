@@ -93,7 +93,7 @@
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/findStudent">
+                        <a _href="${pageContext.request.contextPath}/salesman/AllSalesmanList.action">
                             <%--点击在右侧出现动态的Tab--%>
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>业务员列表</cite>

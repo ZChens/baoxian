@@ -16,4 +16,20 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         select * from salesman
         where salesmanname=#{salesmanname}
     </select>
+
+    <sql id="Salesman_C">
+        salesmanid,salesmanname,password,sex,phone,level
+    </sql>
+
+    <select id="AllSalesmanList" resultType="Salesman" resultSets="java.util.List">
+        select <include refid="Salesman_C"></include> from salesman
+        <where>
+            <if test=" salesmanname != null and salesmanname != '' ">
+                salesmanname like concat("%",#{salesmanname},"%")
+            </if>
+            <if test=" level != null and level != '' ">
+                and salesman.level like concat("%",#{salesman.level},"%")
+            </if>
+        </where>
+    </select>
 </mapper>

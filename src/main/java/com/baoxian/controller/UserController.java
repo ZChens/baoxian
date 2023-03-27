@@ -1,6 +1,7 @@
 package com.baoxian.controller;
 
 
+import com.baoxian.pojo.Salesman;
 import com.baoxian.pojo.User;
 import com.baoxian.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,12 +93,19 @@ public class UserController {
     @RequestMapping("/AllUserList")
     public String AllUserList(Model model,
                               @RequestParam(defaultValue = "1") Integer pageNum,
-                              @RequestParam(defaultValue = "3") Integer pageSize){
-        HashMap<String,Object> map = userService.AllUserList(null,pageNum,pageSize);
+                              @RequestParam(defaultValue = "3") Integer pageSize,
+                              @RequestParam(required = false) String username){
+        User user = null;
+        if(username!=null){
+            user = new User();
+            user.setUsername(username);
+        }
+        HashMap<String,Object> map = userService.AllUserList(user,pageNum,pageSize);
         model.addAttribute("list",map.get("data"));
         model.addAttribute("nowPage",map.get("nowPage"));
         model.addAttribute("total",map.get("total"));
-        return "user/AllUserList";
+        model.addAttribute("username",username);
+        return "/user/AllUserList";
     }
 
 

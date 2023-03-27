@@ -27,8 +27,17 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
         delete from user where userid=#{userid}
     </delete>
 
+    <sql id="User_C">
+        userid,username,password,sex,phone,level,email
+    </sql>
+
     <!--查询所有用户，用于管理员的用户列表-->
-    <select id="AllUserList" resultType="User">
-        select * from user
+    <select id="AllUserList" resultType="User" resultSets="java.util.List">
+        select <include refid="User_C"></include> from User
+        <where>
+            <if test=" username != null and username != '' ">
+                username like concat("%",#{username},"%")
+            </if>
+        </where>
     </select>
 </mapper>
