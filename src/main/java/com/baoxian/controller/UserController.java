@@ -84,7 +84,7 @@ public class UserController {
     @RequestMapping("/gomain")
     public ModelAndView gomain(){
         ModelAndView mv =new ModelAndView();
-        mv.setViewName("/homepage");
+        mv.setViewName("/homepage1");
         return mv;
     }
 
