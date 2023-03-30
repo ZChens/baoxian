@@ -13,21 +13,51 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>保险列表</title>
 </head>
+
+<style>
+    .select form{
+        position: absolute;
+        top: 70px;
+        left: 400px;
+    }
+
+    .fo form{
+        position: absolute;
+        top: 150px;
+        left: 400px;
+    }
+    .fo form table tr th{
+        text-align: center;
+    }
+    .fo form table tbody tr td{
+        text-align: center;
+    }
+    .pagebu{
+        position: absolute;
+        top: 670px;
+        left: 400px;
+    }
+</style>
 <body>
 <div class="select">
-    <form action="${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action" method="get">
-        保险类型:
-        <select id="itype" name="insurancetype" >
-            <option>选择保险类型</option>
-            <option>社会保险</option>
-            <option>商业保险</option>
-        </select>
-        <%--类型:<input type="text" name="insurancetype">--%>
-        关键词:<input type="text" name="insurancename" value="${insurancename}" placeholder="请输入关键词">
-        <input type="submit">
+    <form class="form-inline" action="${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action" method="get">
+        <div class="form-group">
+            <label for="intype">保险类型:</label>
+            <select id="intype" name="insurancetype" type="text" class="form-control">
+                <option>选择保险类型</option>
+                <option>社会保险</option>
+                <option>商业保险</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="iword">关键词:</label>
+            <input type="text" class="form-control" id="iword" name="insurancename" value="${insurancename}" placeholder="请输入关键词">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
     </form>
 </div>
-<form>
+<div class="fo">
+<form style="width: 50%;">
     <table class="table table-bordered">
         <tr>
             <th>#</th>
@@ -35,8 +65,8 @@
             <th>保险类型</th>
             <th>时效期</th>
             <th>价格</th>
-            <th>最高赔偿</th>
             <th>最低赔偿</th>
+            <th>最高赔偿</th>
             <th>操作</th>
         </tr>
         <tbody>
@@ -58,6 +88,8 @@
         </tbody>
     </table>
 </form>
+</div>
+<div class="pagebu" >
 <c:if test="${nowPage==1}">
     <a class="btn btn-primary" href="${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action?pageNum=1&insurancename=${insurancename}&insurancetype=${insurancetype}" role="button">首页</a>
 </c:if>
@@ -84,5 +116,6 @@
 <c:if test="${nowPage!=total}">
     <a class="btn btn-default" href="${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action?pageNum=${total}&insurancename=${insurancename}&insurancetype=${insurancetype}" role="button">末页</a>
 </c:if>
+</div>
 </body>
 </html>

@@ -27,7 +27,7 @@ public class InsuranceinfController {
     @RequestMapping("/SelectInsuranceinfByAll")
     public String SelectInsuranceinfByAll(Model model,
                       @RequestParam(defaultValue = "1") Integer pageNum,
-                      @RequestParam(defaultValue = "3") Integer pageSize,
+                      @RequestParam(defaultValue = "5") Integer pageSize,
                       @RequestParam(required = false) String insurancetype,
                       @RequestParam(required = false) String insurancename){
         Insuranceinf insuranceinf = null;
