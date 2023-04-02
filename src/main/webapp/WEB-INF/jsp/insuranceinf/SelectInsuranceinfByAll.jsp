@@ -81,7 +81,7 @@
                 <td>${insuranceinf.maxpay}</td>
                 <td>
                     <a href="${pageContext.request.contextPath}/insuranceinf/SelectDetailById.action" role="Button">保险详情</a>&nbsp;&nbsp;&nbsp;
-                    <a href="${pageContext.request.contextPath}/insureinf/AddInsureinf.action" role="button">购买</a>
+                    <a href="${pageContext.request.contextPath}/insuranceinf/SelectDetailById2.action" role="button">购买</a>
                 </td>
             </tr>
         </c:forEach>

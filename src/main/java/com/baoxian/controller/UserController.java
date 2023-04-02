@@ -1,7 +1,6 @@
 package com.baoxian.controller;
 
 
-import com.baoxian.pojo.Salesman;
 import com.baoxian.pojo.User;
 import com.baoxian.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +83,7 @@ public class UserController {
     @RequestMapping("/gomain")
     public ModelAndView gomain(){
         ModelAndView mv =new ModelAndView();
-        mv.setViewName("/homepage1");
+        mv.setViewName("homepage");
         return mv;
     }
 

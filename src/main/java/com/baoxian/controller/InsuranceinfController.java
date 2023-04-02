@@ -57,4 +57,17 @@ public class InsuranceinfController {
         }
         return "insuranceinf/SelectDetailById";
     }
+
+    //返回保险详情数据，用于购买页面
+    @RequestMapping("/SelectDetailById2")
+    public String SelectDetailById2( Integer insuranceid, Model model){
+        Insuranceinf insuranceinf = new Insuranceinf();
+        insuranceinf.setInsuranceid(insuranceid);
+        HashMap<String,Object> map = insuranceinfService.SelectInsuranceinfByAll(insuranceinf,1,1);
+        List<Insuranceinf> list = (List<Insuranceinf>) map.get("data");
+        if(list != null&&list.size()>0){
+            model.addAttribute("insuranceinf",list.get(0));
+        }
+        return "insureinf/AddInsureinf";
+    }
 }
