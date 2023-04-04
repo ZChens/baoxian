@@ -6,8 +6,8 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
     <!--创建订单-->
     <insert id="AddInsureinf" parameterType="Insureinf">
-    insert into Insureinf (insurancename, insurancetype, username, salesmanname)
-    values(#{insurancename}, #{insurancetype}, #{username}, #{salesmanname})
+    insert into Insureinf (insurancename, insurancetype, userid,username, salesmanname)
+    values(#{insurancename}, #{insurancetype}, #{userid},#{username}, #{salesmanname})
     </insert>
 
 

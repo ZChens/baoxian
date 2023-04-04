@@ -13,7 +13,7 @@ public interface SalesmanService {
     Salesman SelectBySalesmanName(String salesmanname);
 
     //删除用户和用户注销账号
-    int DeleteSalesmanById(Integer salesmanid);
+    Integer DeleteSalesmanById(String salesmanid);
     //业务员列表
     HashMap<String,Object> AllSalesmanList(Salesman salesman,Integer pageNum, Integer pageSize);
 }

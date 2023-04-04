@@ -14,7 +14,7 @@ import java.util.Date;
 public class Insuranceinf {
 
     //保险编号
-    private Integer insuranceid;
+    private String insuranceid;
     //保险名称
     private String insurancename;
     //保险类型

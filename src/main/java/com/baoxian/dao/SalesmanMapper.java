@@ -13,7 +13,7 @@ public interface SalesmanMapper {
     Salesman SelectBySalesmanName(String salesmanname);
 
     //删除注销账号
-    int DeleteSalesmanById(Integer salesmanid);
+    Integer DeleteSalesmanById(String salesmanid);
 
     //业务员列表
     List<Salesman> AllSalesmanList(Salesman salesman);

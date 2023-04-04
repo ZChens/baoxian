@@ -63,4 +63,23 @@ public class InsureinfController {
         return "insureinf/AllInsureinfList";
     }
 
+
+    //根据用户查询订单，用于客户查看个人订单
+    @RequestMapping("SelectInsureById")
+    public String SelectInsureById(Model model,
+                                   @RequestParam(defaultValue = "1") Integer pageNum,
+                                   @RequestParam(defaultValue = "3") Integer pageSize,
+                                   @RequestParam String userid){
+        Insureinf insureinf = null;
+        if(userid!=null){
+            insureinf = new Insureinf();
+            insureinf.setUserid(userid);
+        }
+        HashMap<String,Object> map = insureinfService.SelectInsureById(insureinf,pageNum,pageSize);
+        model.addAttribute("Ilist",map.get("data"));
+        model.addAttribute("nowPage",map.get("nowPage"));
+        model.addAttribute("total",map.get("total"));
+        model.addAttribute("userid",userid);
+        return "insureinf/SelectInsureById";
+    }
 }

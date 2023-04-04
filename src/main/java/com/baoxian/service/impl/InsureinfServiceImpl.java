@@ -35,4 +35,16 @@ public class InsureinfServiceImpl implements InsureinfService {
         map.put("total",((int)info.getTotal()+pageSize-1)/pageSize);//返回总页面数
         return map;
     }
+
+    @Override
+    public HashMap<String, Object> SelectInsureById(Insureinf userid, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Insureinf> list = insureinfMapper.AllInsureinfList(userid);
+        PageInfo<Insureinf> info = new PageInfo<>(list);
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("data",info.getList());//返回指定页面数据
+        map.put("nowPage",pageNum);//返回当前页面
+        map.put("total",((int)info.getTotal()+pageSize-1)/pageSize);//返回总页面数
+        return map;
+    }
 }

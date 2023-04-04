@@ -22,5 +22,7 @@
  <button onclick="window.location.href='/insureinf/goAddInsureinf.action'">goAddInsureinf</button>
  <button onclick="window.location.href='/insuranceinf/SelectInsuranceinfByAll.action'">SelectInsuranceinfByAll</button>
  <button onclick="window.location.href='/insureinf/AllInsureinfList.action'">AllInsureinfList</button>
+ <button onclick="window.location.href='/user/gouseraccount.action'">gouseraccount</button>
+
 </body>
 </html>

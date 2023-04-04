@@ -29,7 +29,7 @@ public class SalesmanServiceImpl implements SalesmanService {
     }
 
     @Override
-    public int DeleteSalesmanById(Integer salesmanid) {
+    public Integer DeleteSalesmanById(String salesmanid) {
         return salesmanMapper.DeleteSalesmanById(salesmanid);
     }
 

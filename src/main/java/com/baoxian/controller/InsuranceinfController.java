@@ -47,7 +47,7 @@ public class InsuranceinfController {
 
     //保险详情页面
     @RequestMapping("/SelectDetailById")
-    public String SelectDetailById( Integer insuranceid, Model model){
+    public String SelectDetailById( String insuranceid, Model model){
         Insuranceinf insuranceinf = new Insuranceinf();
         insuranceinf.setInsuranceid(insuranceid);
         HashMap<String,Object> map = insuranceinfService.SelectInsuranceinfByAll(insuranceinf,1,1);
@@ -60,7 +60,7 @@ public class InsuranceinfController {
 
     //返回保险详情数据，用于购买页面
     @RequestMapping("/SelectDetailById2")
-    public String SelectDetailById2( Integer insuranceid, Model model){
+    public String SelectDetailById2( String insuranceid, Model model){
         Insuranceinf insuranceinf = new Insuranceinf();
         insuranceinf.setInsuranceid(insuranceid);
         HashMap<String,Object> map = insuranceinfService.SelectInsuranceinfByAll(insuranceinf,1,1);
@@ -69,5 +69,18 @@ public class InsuranceinfController {
             model.addAttribute("insuranceinf",list.get(0));
         }
         return "insureinf/AddInsureinf";
+    }
+
+    //返回保险详情数据，用于首页推荐
+    @RequestMapping("/SelectDetailByName")
+    public String SelectDetailByName( String insurancename, Model model){
+        Insuranceinf insuranceinf = new Insuranceinf();
+        insuranceinf.setInsurancename(insurancename);
+        HashMap<String,Object> map = insuranceinfService.SelectInsuranceinfByAll(insuranceinf,1,1);
+        List<Insuranceinf> list = (List<Insuranceinf>) map.get("data");
+        if(list != null&&list.size()>0){
+            model.addAttribute("insuranceinf",list.get(0));
+        }
+        return "insuranceinf/SelectDetailById";
     }
 }

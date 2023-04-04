@@ -35,7 +35,7 @@
                 <ul>
 
                     <li class='account'>
-                        <a id='account-primary'  href='/account/'>
+                        <a id='account-primary'  href='${pageContext.request.contextPath}/user/gouseraccount.action'>
                             我的帐户
                         </a>
                     </li>
@@ -95,7 +95,7 @@
 
 
                         <li>
-                            <a id='' href='/account/' >
+                            <a id='' href='${pageContext.request.contextPath}/user/gouseraccount.action' >
                                 我的帐户
                             </a>
                         </li>
@@ -221,25 +221,25 @@
             <div class='scroll'>
                 <div class='wrapper'>
                     <div class="scroll-items">
-                        <a id='home-blog-origin' target='_blank' href='' class='thumbnail rect card'>
+                        <a id='home-blog-origin' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=汽车保险' class='thumbnail rect card'>
                             <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic1.jpg)'></div>
                             <span class='tag'>汽车保险</span>
                             <!-- <time>08/07/2017</time> -->
                             <strong>保障汽车安全</strong>
                         </a>
-                        <a id='home-blog-fundamentals' target='_blank' href='/coffee-blog/the-4-fundamentals/' class='thumbnail rect card'>
+                        <a id='home-blog-fundamentals' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=财产保险' class='thumbnail rect card'>
                             <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic2.jpg)'></div>
                             <span class='tag'>财产保险</span>
                             <!-- <time>08/07/2017</time> -->
                             <strong>保障财产安全</strong>
                         </a>
-                        <a id='home-blog-roast' target='_blank' href='/coffee-blog/roast-story/' class='thumbnail rect card'>
+                        <a id='home-blog-roast' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=人寿保险' class='thumbnail rect card'>
                             <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic3.jpg)'></div>
                             <span class='tag'>人寿保险</span>
                             <!-- <time>08/07/2017</time> -->
                             <strong>保障生命安全</strong>
                         </a>
-                        <a id='home-blog-pour' target='_blank' href='/coffee-blog/pour-over/' class='thumbnail rect card'>
+                        <a id='home-blog-pour' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=意外保险' class='thumbnail rect card'>
                             <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic4.jpg)'></div>
                             <span class='tag'>意外保险</span>
                             <!-- <time>08/07/2017</time> -->

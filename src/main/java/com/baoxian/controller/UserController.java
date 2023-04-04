@@ -3,9 +3,11 @@ package com.baoxian.controller;
 
 import com.baoxian.pojo.User;
 import com.baoxian.service.UserService;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,6 +89,14 @@ public class UserController {
         return mv;
     }
 
+    //转到用户账号管理页面
+    @RequestMapping("/gouseraccount")
+    public ModelAndView gouseraccount(){
+        ModelAndView mv =new ModelAndView();
+        mv.setViewName("/user/UserAccount");
+        return mv;
+    }
+
 
     //查询所有用户，用于管理员的用户列表
     @RequestMapping("/AllUserList")
@@ -107,6 +117,16 @@ public class UserController {
         return "/user/AllUserList";
     }
 
-
+    //根据id查询用户信息，用于用户个人资料
+    @RequestMapping("/SelectByUserId" )
+    @GetMapping
+    public String SelectByUserId(String userid){
+        int i = userService.SelectByUserId(userid);
+        if(i == 1){
+            return "/user/UserAccount";
+        }else{
+            return "";
+        }
+    }
 
 }

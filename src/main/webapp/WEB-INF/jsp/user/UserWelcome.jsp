@@ -1,269 +1,374 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false"%>
-<html>
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<html id="black">
 <head>
-    <title>后台登录</title>
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <%--<meta http-equiv="Cache-Control" content="no-siteapp" />--%>
 
-    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" sizes="32x32" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/xadmin.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.3.2.min.js"></script>
-    <script src="${pageContext.request.contextPath}/lib/layui/layui.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/xadmin.js"></script>
-    <script src="${pageContext.request.contextPath}/layui_exts/excel.js"></script>
+    <title>欢迎使用保险业务管理平台</title>
+
+    <!-- Meta -->
+
+    <meta charset='utf-8'/>
+    <meta http-equiv='Content-Language' content='zh'/>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sess2.css">
+
+
+</head>
+
+
+
+<body class='lang-zh page-front' ontouchstart=''>
+
+
+<nav id='nav'>
+    <div id='placeholder-element'></div>
+    <div class='container'>
+        <header class='header'>
+            <a class='logo' href='/'>
+                <img src='${pageContext.request.contextPath}/img/sheild.jpg' />
+            </a>
+            <div class='primary'>
+                <ul>
+
+                    <li class='account'>
+                        <a id='account-primary'  href='${pageContext.request.contextPath}/user/gouseraccount.action'>
+                            我的帐户
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <a class='icon trigger' rel='nav-overlay' id='nav-menu'>
+                <img src='${pageContext.request.contextPath}/css/icon-hamburger.svg'/>
+                <span>更多</span>
+            </a>
+
+        </header>
+
+        <div class='body'>
+            <div class='container middle secondary'>
+                <div data-reactroot>
+          <span>
+            <div class="display-1">
+              <span>欢迎使用</span><br>
+              <span>保险业务管理系统</span>
+            </div>
+            <footer class="account margin2 mobile-hidden">
+              <label>欢迎您！${sessionScope.user.username}</label>
+
+            </footer>
+          </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class='overlay ' id='nav-overlay'>
+        <div class='container'>
+            <header class='header'>
+                <a class='logo' href='/'>
+                    <img src='${pageContext.request.contextPath}/img/sheild.jpg'/>
+                </a>
+                <button class='icon close'>Close</button>
+            </header>
+            <section class='body'>
+                <div class='container middle'>
+                    <ul>
+
+
+                        <li>
+                            <a id='' href='${pageContext.request.contextPath}/user/gouseraccount.action' >
+                                我的帐户
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a id='svc-overlay' href='${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action' >
+                                保险列表
+                            </a>
+                        </li>
+
+
+
+                        <li>
+                            <a id='help-overlay' href='${pageContext.request.contextPath}/help/' >
+                                帮助中心
+                            </a>
+                        </li>
+
+
+                        <li><hr/></li>
+                    </ul>
+                </div>
+            </section>
+            <footer class='footer'>
+                <div class='container'>
+
+                    <a id='privacy-collapse' href='/'>
+                        隐私政策
+                    </a>
+                    |
+                    <a id='terms-collapse' href='/'>
+                        使用条款
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </div>
+</nav>
+
+<style>
+    @media (min-width: 1025px) {
+        #terms-notes {
+            margin-left: 30%;
+            width: 69%;
+        }
+        #placeholder-element {
+            display: none;
+        }
+    }
+    .terms-notes {
+        position: fixed;
+        display: none;
+        width: 100%;
+        padding: 4px 16px;
+        background-color: #0bac69;
+        z-index: 999;
+    }
+    .terms-notes p {
+        margin: 0;
+        padding-right: 18px
+    }
+    .terms-notes p a {
+        width: 100%;
+        margin: 0;
+        color: #ffffff;
+    }
+</style>
+
+<!-- Page content -->
+<section id='content'>
 
     <style>
-        .o_div{
-            background: url("/img/01.jpg") no-repeat;
+        #app-promotion .close {
+            display: none !important;
         }
-        .o_span{
-            display: block;
+        @media (max-width: 1024px) {
+            #desktop-placeholder-element {
+                display: none;
+            }
+        }
+
+        .video-wrapper {
             text-align: center;
-            font-size: 20px;
-            letter-spacing:8px
         }
     </style>
-</head>
-<body>
-<!-- 顶部开始 -->
-<div class="container">
-    <div class="logo"><a href="">保险管理系统</a></div>
-    <div class="left_open">
-        <i title="展开左侧栏" class="iconfont">&#xe699;</i>
-    </div>
-    <%--<ul class="layui-nav left fast-add" lay-filter="">--%>
-        <%--<li class="layui-nav-item">--%>
-            <%--<a href="javascript:;">+新增</a>--%>
-            <%--<dl class="layui-nav-child"> <!-- 二级菜单 -->--%>
-                <%--<dd><a onclick=""><i class="iconfont">&#xe6a2;</i>资讯</a></dd>--%>
-                <%--<dd><a onclick=""><i class="iconfont">&#xe6a8;</i>图片</a></dd>--%>
-                <%--<dd><a onclick=""><i class="iconfont">&#xe6b8;</i>用户</a></dd>--%>
-            <%--</dl>--%>
-        <%--</li>--%>
-    <%--</ul>--%>
-    <ul class="layui-nav right" lay-filter="">
-        <li class="layui-nav-item">
-            <a href="javascript:;"><img src="http://m.zhengjinfan.cn/images/0.jpg" class="layui-nav-img">${sessionScope.ad.a_username}</a>
-            <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a onclick="x_admin_show('切换帐号','loginOut')">切换帐号</a></dd>
-                <dd><a href="/loginOut">退出</a></dd>
-            </dl>
-        </li>
-        <li class="layui-nav-item to-index"><a href="/loginOut">前台首页</a></li>
-    </ul>
 
-</div>
-<!-- 顶部结束 -->
-<!-- 中部开始 -->
-<!-- 左侧菜单开始 -->
-<div class="left-nav">
-    <div id="side-nav">
-        <ul id="nav">
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b8;</i>
-                    <cite>用户管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findStudent">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>个人信息</cite>
-
-                        </a>
-                    </li >
-
-                </ul>
-            </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe723;</i>
-                    <cite>班级管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findClass">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>班级列表</cite>
-                        </a>
-                    </li >
-
-                    <li>
-                        <a _href="/findClassStudent">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>班级学生</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
+    <section class='promotion'>
+        <div class='wrapper fluid'>
+            <div class='grid columns-3 padded-2'>
+                <a id='home-left-campaign' ><img src='${pageContext.request.contextPath}/img/shake1.jpg' alt=""/></a>
+                <a id='home-middle-campaign' href='${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action?pageNum=1&insurancetype=社会保险' target='_blank'><img src='${pageContext.request.contextPath}/img/scinsure.jpg' alt=""/></a>
+                <a id='home-right-campaign' href='' target='_blank'><img src='${pageContext.request.contextPath}/img/shake.jpg' alt=""/></a>
+            </div>
+        </div>
+    </section>
 
 
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#59095;</i>
-                    <cite>宿舍管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormitory">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>宿舍列表</cite>
-                        </a>
-                    </li >
-                </ul>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormitoryStudent">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>人员信息</cite>
-                        </a>
-                    </li >
-                </ul>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormRepair">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>维修登记</cite>
-                        </a>
-                    </li >
-                </ul>
-
-            </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#59042;</i>
-                    <cite>卫生管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findDormClean">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>宿舍卫生</cite>
-                        </a>
-                    </li >
-                </ul>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findStudentClean">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>学生卫生</cite>
-                        </a>
-                    </li >
-                </ul>
-
-            </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="layui-icon">&#xe613;</i>
-                    <cite>访客管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findVisitor">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>访客列表</cite>
-                        </a>
-                    </li >
-                </ul>
-            </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe726;</i>
-                    <cite>管理员管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="/findAdmin">
-                            <%--点击在右侧出现动态的Tab--%>
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>管理员列表</cite>
-                        </a>
-                    </li >
-
-
-                </ul>
-            </li>
-
-
-        </ul>
-    </div>
-</div>
-<!-- <div class="x-slide_left"></div> -->
-<!-- 左侧菜单结束 -->
-<!-- 右侧主体开始 -->
-<div class="page-content">
-    <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
-        <ul class="layui-tab-title">
-            <li class="home"><i class="layui-icon">&#xe68e;</i>我的桌面</li>
-        </ul>
-        <div class="layui-tab-content" >
-            <div class="layui-tab-item layui-show o_div" >
-                <span class="o_span">${sessionScope.user.username}管理员，欢迎来到宿舍管理系统！</span>
-                <div class="layui-col-md6" style="padding: 30px;left: 60px;background-color: #F2F2F2;">
-                <div class="layui-card">
-                <div class="layui-card-header">个人信息
-                        </div>
-                        <div class="layui-card-body">
-                            <%--<div class="layui-form-label" style="text-align: left">你好</div>--%>
-                           用户名：${sessionScope.user.username}
-                        </div>
-                        <div class="layui-card-body">
-                            电话：${sessionScope.user.phone}
-                        </div>
-                        <div class="layui-card-body">
-                            级别描述：${sessionScope.user.level}
-                        </div>
+    <section class='program-msr bg-white'>
+        <div class='wrapper'>
+            <div class='grid columns-2 padded-2'>
+                <div>
+                    <h2 >保险管理系统</h2>
+                    <p >选择您的保险，保障您的生活。<a id="home-msr-learn-more" class='button link' href='${pageContext.request.contextPath}/insuranceinf/SelectInsuranceinfByAll.action'>了解更多 ›</a></p>
                 </div>
+                <div class='image'>
+                    <img src='/img/sheild.jpg' />
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="page-content-bg"></div>
-<!-- 右侧主体结束 -->
-<!-- 中部结束 -->
-<!-- 底部开始 -->
-<div class="footer">
-    <div class="copyright">Copyright ©2019-2020 版权所有</div>
-</div>
-<!-- 底部结束 -->
+    <section class='coffeehouse'>
+        <div class='wrapper center'>
+            <h2 class='wrapper-mobile'>热门保险展示</h2>
+            <p class='light wrapper-mobile'>选择更多保险</p>
+        </div>
+        <div class='scroll-wrapper'>
+            <div class='scroll-arrow scroll-arrow-left'>
+                <img src='https://www-static.chinacdn.starbucks.com.cn/prod/assets/icons/icon-scroll-left.svg' />
+            </div>
+            <div class='scroll'>
+                <div class='wrapper'>
+                    <div class="scroll-items">
+                        <a id='home-blog-origin' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=汽车保险' class='thumbnail rect card'>
+                            <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic1.jpg)'></div>
+                            <span class='tag'>汽车保险</span>
+                            <!-- <time>08/07/2017</time> -->
+                            <strong>保障汽车安全</strong>
+                        </a>
+                        <a id='home-blog-fundamentals' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=财产保险' class='thumbnail rect card'>
+                            <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic2.jpg)'></div>
+                            <span class='tag'>财产保险</span>
+                            <!-- <time>08/07/2017</time> -->
+                            <strong>保障财产安全</strong>
+                        </a>
+                        <a id='home-blog-roast' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=人寿保险' class='thumbnail rect card'>
+                            <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic3.jpg)'></div>
+                            <span class='tag'>人寿保险</span>
+                            <!-- <time>08/07/2017</time> -->
+                            <strong>保障生命安全</strong>
+                        </a>
+                        <a id='home-blog-pour' target='_blank' href='${pageContext.request.contextPath}/insuranceinf/SelectDetailByName.action?insurancename=意外保险' class='thumbnail rect card'>
+                            <div class='preview' style='background-image: url(${pageContext.request.contextPath}/img/pic4.jpg)'></div>
+                            <span class='tag'>意外保险</span>
+                            <!-- <time>08/07/2017</time> -->
+                            <strong>防止意外情况</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class='scroll-arrow scroll-arrow-right'>
+                <img src='https://www-static.chinacdn.starbucks.com.cn/prod/assets/icons/icon-scroll-right.svg' />
+            </div>
+        </div>
+    </section>
+    <footer class="index-footer">
+        <style>
+            .index-footer {
+                margin-bottom: -24px;
+                background: #fff;
+            }
 
-<script>
+            @media screen and (max-width: 640px) {
+                .index-footer {
+                    margin-bottom: 0;
+                }
+            }
 
-    layui.config({
-        base: 'layui_exts/',
-    }).extend({
-        excel: 'excel',
-    });
+        </style>
 
-</script>
+        <style>
+            .license {
+                color: #666;
+                font-size: 14px;
+                text-align: center;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 640px) {
+                .license {
+                    font-size: 12px;
+                }
+            }
+
+            .license a {
+                color: #666;
+            }
+
+            .license a:hover {
+                color: #333;
+            }
+        </style>
+        <div class="license">
+
+
+
+
+
+
+            <!-- Javascript -->
+
+            <!--[if lt IE 9
+  ]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script
+        ><![endif]-->
+            <script>
+                var PAGE_LANG = 'zh';
+                var PAGE_TITLE = '用每一杯咖啡传递星巴克独特的咖啡体验';
+                var PAGE_URL = '/';
+                var SEARCH_EMPTY = '未找到结果，猜你喜欢';
+                var SEARCH_POPULAR = '大家都在搜';
+                var SURVEY_URL = '';
+            </script>
+
+            <script
+                    type="text/javascript"
+                    src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"
+            ></script>
+
+            <script
+                    type="text/javascript"
+                    src="https://cards.starbucks.com.cn/esabxubs5h.js"
+            ></script>
+            <script
+                    type="text/javascript"
+                    src="https://cards.starbucks.com.cn/prod/assets/js/esabxubs5hwen.js?"
+            ></script>
+            <script
+                    type="text/javascript"
+                    src="https://cards.starbucks.com.cn/prod/assets/js/esabxubs5hwen.js?async"
+                    async
+            ></script>
+
+            <script
+                    type="text/javascript"
+                    src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/base-bundle.js?202302232015"
+            ></script>
+
+            <script
+                    type="text/javascript"
+                    src='https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/common.bundle.js?202302232015'
+            ></script>
+            <script
+                    type="text/javascript"
+                    src='https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/vendor.bundle.js?202302232015'
+            ></script>
+            <script
+                    type="text/javascript"
+                    src='https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/pages.bundle.js?202302232015'
+            ></script>
+
+
+            <script
+                    type="text/javascript"
+                    src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/slick.min.js"
+            ></script>
+            <script
+                    type="text/javascript"
+                    src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/home-base.js?v2"
+            ></script>
+            <script
+                    type="text/javascript"
+                    src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/homepage.js?v6"
+            ></script>
+            <script
+                    type="text/javascript"
+                    src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/tmall-banner.js?v6"
+            ></script>
+            <script
+                    type="text/javascript"
+                    src="https://www-static.chinacdn.starbucks.com.cn/prod/assets/js/homepage-banner.js?v6"
+            ></script>
+
+
+            <!-- <script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js" crossorigin="anonymous"></script> -->
+
+
+
+
+
+
+
 </body>
+
 </html>

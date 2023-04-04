@@ -15,10 +15,10 @@ public interface UserService {
     User UserLogin(User record);
 
     //根据姓名查询用户，用于个人信息功能
-    User SelectByUserName(String username);
+    int SelectByUserId(String userid);
 
     //删除用户和用户注销账号
-    int DeleteUserById(Integer userid);
+    Integer DeleteUserById(String userid);
 
     //查询所有用户，用于管理员的用户列表
     HashMap<String,Object> AllUserList(User user,Integer pageNum, Integer pageSize);

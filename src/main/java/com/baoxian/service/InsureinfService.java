@@ -18,5 +18,6 @@ public interface InsureinfService {
     HashMap<String,Object> AllInsureinfList(Insureinf insureinf, Integer pageNum, Integer pageSize);
 
     //根据用户查询订单，用于客户查看个人订单
+    HashMap<String,Object> SelectInsureById(Insureinf userid, Integer pageNum, Integer pageSize);
 
 }

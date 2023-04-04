@@ -18,8 +18,10 @@ public interface InsureinfMapper {
     List<Insureinf> AllInsureinfList(Insureinf insureinf);
 
     //根据用户查询订单，用于客户查看个人订单
+    List<Insureinf> SelectInsureById(Insureinf userid);
 
     //修改支付状态，用于用户支付订单
+
 
     //修改审核状态，用于管理员审核订单
 

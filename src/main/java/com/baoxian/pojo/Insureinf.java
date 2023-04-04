@@ -14,11 +14,13 @@ import java.util.Date;
 public class Insureinf {
 
     //保险编号
-    private Integer insuranceid;
+    private String insuranceid;
     //保险名称
     private String insurancename;
     //保险类别
     private String insurancetype;
+    //用户id
+    private String userid;
     //用户姓名
     private String username;
     //业务员姓名
