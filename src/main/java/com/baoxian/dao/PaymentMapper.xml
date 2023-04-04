@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//
+EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baoxian.dao.PaymentMapper">
+
+<!--    添加赔付订单，用于用户赔付-->
+    <insert id="AddPayment" parameterType="Payment">
+        insert into Payment (userid,username,insurancename,insurancetype,minpay,maxpay)
+        value (#{userid},#{username},#{insurancename},#{insurancetype},#{minpay},#{maxpay})
+    </insert>
+
+    <sql id="payment-c">
+        payid,userid,username,insurancename,insurancetype,minpay,maxpay,pstate
+    </sql>
+
+    <select id="AllPaymentList" resultType="Payment" resultSets="java.util.List">
+        select <include refid="payment-c"></include> from payment
+        <where>
+            <if test=" username != null and username != '' ">
+                and username like concat("%",#{username},"%")
+            </if>
+            <if test=" userid != null and userid != '' ">
+                and userid = #{userid}
+            </if>
+            <if test=" payid != null and payid != '' ">
+                and payid = #{payid}
+            </if>
+        </where>
+    </select>
+
+    <update id="UpdatePstate">
+        update payment
+        set pstate='已赔付'
+        where payid=#{payid}
+    </update>
+</mapper>

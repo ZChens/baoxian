@@ -1,5 +1,6 @@
 package com.baoxian.dao;
 
+import com.baoxian.pojo.Insuranceinf;
 import com.baoxian.pojo.Insureinf;
 
 import java.util.List;
@@ -21,9 +22,8 @@ public interface InsureinfMapper {
     List<Insureinf> SelectInsureById(Insureinf userid);
 
     //修改支付状态，用于用户支付订单
+    Integer Updatepaystate(Insureinf insureinfid);
 
-
-    //修改审核状态，用于管理员审核订单
 
 
 }

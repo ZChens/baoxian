@@ -126,6 +126,13 @@
                             <cite>订单列表</cite>
                         </a>
                     </li >
+                    <li>
+                        <a _href="${pageContext.request.contextPath}/payment/AllPaymentList.action">
+                            <%--点击在右侧出现动态的Tab--%>
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>赔付列表</cite>
+                        </a>
+                    </li >
                 </ul>
             </li>
 

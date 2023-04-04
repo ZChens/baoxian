@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>我的保险</title>
+    <title>我的赔付</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
@@ -158,35 +158,20 @@
             <th>保险名称</th>
             <th>保险类型</th>
             <th>客户</th>
-            <th>审核状态</th>
-            <th>审核留言</th>
-            <th>支付状态</th>
-            <th>生效时间</th>
-            <th>结束时间</th>
             <th>最低赔偿</th>
             <th>最高赔偿</th>
             <th>保险状态</th>
-            <th>操作</th>
         </tr>
         <tbody>
-        <c:forEach items="${Ilist}" var="insureinf">
+        <c:forEach items="${list}" var="payment">
             <tr>
-                <td>${insureinf.insureinfid}</td>
-                <td>${insureinf.insurancename}</td>
-                <td>${insureinf.insurancetype}</td>
-                <td>${insureinf.username}</td>
-                <td>${insureinf.checkstate}</td>
-                <td>${insureinf.checkmessage}</td>
-                <td>${insureinf.paystate}</td>
-                <td>${insureinf.starttime}</td>
-                <td>${insureinf.endtime}</td>
-                <td>${insureinf.minpay}</td>
-                <td>${insureinf.maxpay}</td>
-                <td>${insureinf.finalstate}</td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/insureinf/updatepaystate.action?insureinfid=${insureinf.insureinfid}" role="Button">支付</a>&nbsp;&nbsp;&nbsp;
-                    <a href="${pageContext.request.contextPath}/insureinf/SelectInsureinfByAll.action?insureinfid=${insureinf.insureinfid}" role="button">赔付</a>
-                </td>
+                <td>${payment.payid}</td>
+                <td>${payment.insurancename}</td>
+                <td>${payment.insurancetype}</td>
+                <td>${payment.username}</td>
+                <td>${payment.minpay}</td>
+                <td>${payment.maxpay}</td>
+                <td>${payment.pstate}</td>
             </tr>
         </c:forEach>
         </tbody>
@@ -194,30 +179,30 @@
 </div>
 <div class="pagebu" >
     <c:if test="${nowPage==1}">
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=1" role="button">首页</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=1" role="button">首页</a>
     </c:if>
     <c:if test="${nowPage!=1}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=1" role="button">首页</a>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=1" role="button">首页</a>
     </c:if>
     <c:if test="${nowPage>1}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${nowPage-1}" role="button">上一页</a>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=${nowPage-1}" role="button">上一页</a>
     </c:if>
     <c:forEach var="i" begin="1" end="${total}" step="1">
         <c:if test="${i == nowPage}">
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${i}" role="button">${i}</a>
+            <a class="btn btn-primary" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=${i}" role="button">${i}</a>
         </c:if>
         <c:if test="${i != nowPage}">
-            <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${i}" role="button">${i}</a>
+            <a class="btn btn-default" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=${i}" role="button">${i}</a>
         </c:if>
     </c:forEach>
     <c:if test="${nowPage<total}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${nowPage+1}" role="button">下一页</a>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=${nowPage+1}" role="button">下一页</a>
     </c:if>
     <c:if test="${nowPage==total}">
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${total}" role="button">末页</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=${total}" role="button">末页</a>
     </c:if>
     <c:if test="${nowPage!=total}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${total}" role="button">末页</a>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}&pageNum=${total}" role="button">末页</a>
     </c:if>
 </div>
 </body>

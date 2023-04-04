@@ -117,16 +117,5 @@ public class UserController {
         return "/user/AllUserList";
     }
 
-    //根据id查询用户信息，用于用户个人资料
-    @RequestMapping("/SelectByUserId" )
-    @GetMapping
-    public String SelectByUserId(String userid){
-        int i = userService.SelectByUserId(userid);
-        if(i == 1){
-            return "/user/UserAccount";
-        }else{
-            return "";
-        }
-    }
 
 }

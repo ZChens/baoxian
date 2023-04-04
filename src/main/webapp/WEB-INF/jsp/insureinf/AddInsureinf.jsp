@@ -64,8 +64,8 @@
     <form action="${pageContext.request.contextPath}/insureinf/AddInsureinf.action" style="padding-left: 30px" >
         <input type="text" name="insurancename" value="${insuranceinf.insurancename}" hidden>
         <input type="text" name="insurancetype" value="${insuranceinf.insurancetype}" hidden>
+        <input type="text"  name="userid" value="${sessionScope.user.userid}" hidden>
         <input type="text"  name="username" value="${sessionScope.user.username}" hidden>
-        <input type="text" name="salesman" value="${insuranceinf.insurancetype}" hidden>
         <button type="submit" class="btn btn-default" style="width: 100px; height: 40px;z-index: 1;margin-top: 15px;margin-left: 80px "><th style="margin-top:3px;z-index: 2">确认</th></button>
     </form>
     <button onclick="window.local.href('javascript:history.back(-1)')" class="btn btn-default" style="width: 100px; height: 40px;z-index: 1;margin-top: -55px;margin-left: 380px;text-align: center; "><th style="margin-top:3px;z-index: 2">取消</th></button>

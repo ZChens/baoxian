@@ -140,7 +140,7 @@
         <li><a href="${pageContext.request.contextPath}/user/gouseraccount.action" ><span>个人信息</span></a></li>
         <li><a href="#" ><span>修改密码</span></a></li>
         <li><a href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}" ><span>我的保险</span></a></li>
-        <li><a href="#" ><span>我的赔付</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}" ><span>我的赔付</span></a></li>
         <li><a href="#" ><span>退出</span></a></li>
     </ul>
 

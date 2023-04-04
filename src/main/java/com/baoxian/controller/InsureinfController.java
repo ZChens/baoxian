@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping("/insureinf")
@@ -34,7 +35,7 @@ public class InsureinfController {
     public String AddInsureinf(Insureinf insureinf){
         int i = insureinfService.AddInsureinf(insureinf);
         if(i==1){
-            return "redirect:/insureinf/111.jsp";//跳转到用户个人订单页面
+            return "insureinf/addsuccess";//跳转到用户个人订单页面
         }else{
             return "";
         }
@@ -81,5 +82,25 @@ public class InsureinfController {
         model.addAttribute("total",map.get("total"));
         model.addAttribute("userid",userid);
         return "insureinf/SelectInsureById";
+    }
+
+    //修改支付状态，用于用户支付订单
+    @RequestMapping("updatepaystate")
+    public String Updatepaystate(Insureinf insureinfid){
+        insureinfService.Updatepaystate(insureinfid);
+        return "insureinf/Paysuccess";
+    }
+
+    //根据insureinfid查询详细信息，用于赔付页面
+    @RequestMapping("SelectInsureinfByAll")
+    public String SelectInsureinfByAll(Integer insureinfid, Model model){
+        Insureinf insureinf = new Insureinf();
+        insureinf.setInsureinfid(insureinfid);
+        HashMap<String,Object> map =insureinfService.AllInsureinfList(insureinf,1,1);
+        List<Insureinf> list =(List<Insureinf>) map.get("data");
+        if(list != null&&list.size()>0){
+            model.addAttribute("insureinf",list.get(0));
+        }
+        return "payment/AddPayment";
     }
 }

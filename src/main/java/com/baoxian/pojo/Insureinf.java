@@ -14,7 +14,7 @@ import java.util.Date;
 public class Insureinf {
 
     //保险编号
-    private String insuranceid;
+    private Integer insureinfid;
     //保险名称
     private String insurancename;
     //保险类别
@@ -23,8 +23,6 @@ public class Insureinf {
     private String userid;
     //用户姓名
     private String username;
-    //业务员姓名
-    private String salesmanname;
     //审核状态
     private String checkstate;
     //审核留言
@@ -32,7 +30,7 @@ public class Insureinf {
     //支付状态
     private String paystate;
     //生效时间
-    private Date starttime;
+    private String starttime;
     //结束时间
     private String endtime;
     //最低赔偿

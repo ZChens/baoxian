@@ -47,4 +47,10 @@ public class InsureinfServiceImpl implements InsureinfService {
         map.put("total",((int)info.getTotal()+pageSize-1)/pageSize);//返回总页面数
         return map;
     }
+
+    @Override
+    public Integer Updatepaystate(Insureinf insureinfid) {
+        return insureinfMapper.Updatepaystate(insureinfid);
+    }
+
 }

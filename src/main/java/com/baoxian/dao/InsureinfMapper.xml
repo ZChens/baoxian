@@ -5,18 +5,23 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.baoxian.dao.InsureinfMapper">
 
     <!--创建订单-->
+
     <insert id="AddInsureinf" parameterType="Insureinf">
-    insert into Insureinf (insurancename, insurancetype, userid,username, salesmanname)
-    values(#{insurancename}, #{insurancetype}, #{userid},#{username}, #{salesmanname})
+    insert into Insureinf (insurancename, insurancetype, userid, username)
+    values(#{insurancename}, #{insurancetype}, #{userid},#{username})
     </insert>
 
 
     <!--修改订单-->
-
+    <update id="Updatepaystate" >
+        update Insureinf
+        set paystate='已支付'
+        where insureinfid=#{insureinfid}
+    </update>
 
 
     <sql id="insureinf_C">
-        insuranceid,insurancename,insurancetype,username,salesmanname,checkstate,checkmessage,paystate,starttime,endtime,minpay,maxpay,finalstate
+        insureinfid,insurancename,insurancetype,userid,username,checkstate,checkmessage,paystate,starttime,endtime,minpay,maxpay,finalstate
     </sql>
 
     <!--查询所有订单，用于业务员和管理员-->
@@ -28,6 +33,12 @@ EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
             </if>
             <if test=" username != null and username != '' ">
                 and username like concat("%",#{username},"%")
+            </if>
+            <if test=" userid != null and userid != '' ">
+                and userid = #{userid}
+            </if>
+            <if test=" insureinfid != null and insureinfid != '' ">
+                and insureinfid = #{insureinfid}
             </if>
         </where>
     </select>

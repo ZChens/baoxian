@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>我的保险</title>
+    <title>索赔成功</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
           integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
@@ -107,33 +107,28 @@
     }
     .bo{
         position: absolute;
-        left: 300px;
-        top: 90px;
+        left: 800px;
+        top: 100px;
     }
     .bo .table-bordered{
-        width: 1400px;
-        height: 400px;
+        width: 400px;
+        height: 600px;
     }
     .bo .table-bordered tr {
         width: 200px;
-        /*height: 40px;*/
+        height: 40px;
         text-align: center;
     }
     .bo .table-bordered tr th{
-        /*height: 40px;*/
+        height: 40px;
         text-align: center;
-        /*padding-top: 12%;*/
+        padding-top: 12%;
     }
     .bo .table-bordered tr td{
         width: 200px;
-        /*height: 40px;*/
+        height: 40px;
         text-align: center;
-        padding-top: 4%;
-    }
-    .pagebu{
-        position: absolute;
-        top: 770px;
-        left: 400px;
+        padding-top: 12%;
     }
 </style>
 <body>
@@ -145,80 +140,16 @@
         <li><a href="${pageContext.request.contextPath}/user/gouseraccount.action" ><span>个人信息</span></a></li>
         <li><a href="#" ><span>修改密码</span></a></li>
         <li><a href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}" ><span>我的保险</span></a></li>
-        <li><a href="${pageContext.request.contextPath}/payment/SelectPayById.action?userid=${sessionScope.user.userid}" ><span>我的赔付</span></a></li>
+        <li><a href="#" ><span>我的赔付</span></a></li>
         <li><a href="#" ><span>退出</span></a></li>
     </ul>
 
 </div>
 
 <div class="bo">
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>保险名称</th>
-            <th>保险类型</th>
-            <th>客户</th>
-            <th>审核状态</th>
-            <th>审核留言</th>
-            <th>支付状态</th>
-            <th>生效时间</th>
-            <th>结束时间</th>
-            <th>最低赔偿</th>
-            <th>最高赔偿</th>
-            <th>保险状态</th>
-            <th>操作</th>
-        </tr>
-        <tbody>
-        <c:forEach items="${Ilist}" var="insureinf">
-            <tr>
-                <td>${insureinf.insureinfid}</td>
-                <td>${insureinf.insurancename}</td>
-                <td>${insureinf.insurancetype}</td>
-                <td>${insureinf.username}</td>
-                <td>${insureinf.checkstate}</td>
-                <td>${insureinf.checkmessage}</td>
-                <td>${insureinf.paystate}</td>
-                <td>${insureinf.starttime}</td>
-                <td>${insureinf.endtime}</td>
-                <td>${insureinf.minpay}</td>
-                <td>${insureinf.maxpay}</td>
-                <td>${insureinf.finalstate}</td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/insureinf/updatepaystate.action?insureinfid=${insureinf.insureinfid}" role="Button">支付</a>&nbsp;&nbsp;&nbsp;
-                    <a href="${pageContext.request.contextPath}/insureinf/SelectInsureinfByAll.action?insureinfid=${insureinf.insureinfid}" role="button">赔付</a>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    <label>请求索赔成功</label>
+    <a href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}" type="button" class="btn btn-default">查看我的赔付</a>
 </div>
-<div class="pagebu" >
-    <c:if test="${nowPage==1}">
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=1" role="button">首页</a>
-    </c:if>
-    <c:if test="${nowPage!=1}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=1" role="button">首页</a>
-    </c:if>
-    <c:if test="${nowPage>1}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${nowPage-1}" role="button">上一页</a>
-    </c:if>
-    <c:forEach var="i" begin="1" end="${total}" step="1">
-        <c:if test="${i == nowPage}">
-            <a class="btn btn-primary" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${i}" role="button">${i}</a>
-        </c:if>
-        <c:if test="${i != nowPage}">
-            <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${i}" role="button">${i}</a>
-        </c:if>
-    </c:forEach>
-    <c:if test="${nowPage<total}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${nowPage+1}" role="button">下一页</a>
-    </c:if>
-    <c:if test="${nowPage==total}">
-        <a class="btn btn-primary" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${total}" role="button">末页</a>
-    </c:if>
-    <c:if test="${nowPage!=total}">
-        <a class="btn btn-default" href="${pageContext.request.contextPath}/insureinf/SelectInsureById.action?userid=${sessionScope.user.userid}&pageNum=${total}" role="button">末页</a>
-    </c:if>
-</div>
+
 </body>
 </html>

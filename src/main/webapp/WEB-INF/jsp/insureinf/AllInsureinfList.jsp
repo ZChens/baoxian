@@ -28,7 +28,6 @@
             <th>保险名称</th>
             <th>保险类型</th>
             <th>客户</th>
-            <th>业务员</th>
             <th>审核状态</th>
             <th>审核留言</th>
             <th>支付状态</th>
@@ -42,11 +41,10 @@
         <tbody>
         <c:forEach items="${list}" var="insureinf">
             <tr>
-                <td>${insureinf.insuranceid}</td>
+                <td>${insureinf.insureinfid}</td>
                 <td>${insureinf.insurancename}</td>
                 <td>${insureinf.insurancetype}</td>
                 <td>${insureinf.username}</td>
-                <td>${insureinf.salesmanname}</td>
                 <td>${insureinf.checkstate}</td>
                 <td>${insureinf.checkmessage}</td>
                 <td>${insureinf.paystate}</td>

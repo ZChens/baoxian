@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 public class User {
 
     //用户编号
-    private String userid;
+    private Integer userid;
     //用户姓名
     private String username;
     //用户账号密码

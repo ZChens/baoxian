@@ -33,13 +33,13 @@ public class UserServiceImpl implements UserService {
 
     //根据姓名查询用户，用于个人信息功能
     @Override
-    public int SelectByUserId(String userid) {
+    public int SelectByUserId(Integer userid) {
         return userMapper.SelectByUserId(userid);
     }
 
     //删除用户和用户注销账号
     @Override
-    public Integer DeleteUserById(String userid) {
+    public Integer DeleteUserById(Integer userid) {
         return userMapper.DeleteUserById(userid);
     }
 
